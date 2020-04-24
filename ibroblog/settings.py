@@ -25,18 +25,25 @@ SECRET_KEY = 'f24ciae80+80t9-1#f*pzsmn71+zh6daji@(yo1+pjw-271r1y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tijani.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_comments',
+    'mptt',
+    'tagging',
+    #'blogquintet',
+    'zinnia',
+    'blogib',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'zinnia.context_processors.version', #optional
+                #'blogquintet.context_processors.media',
             ],
         },
     },
@@ -77,6 +86,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'tijani$ibrodata',
+        #'USER': 'tijani',
+        #'PASSWORD': '172910249271ade',
+        #'HOST': 'tijani.mysql.pythonanywhere-services.com',
+        #'OPTIONS':{
+        #    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        #}
     }
 }
 
@@ -118,3 +135,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+SITE_ID = 1
+MEDIA_URL = '/media/'
+# BLOGQUINTET_MEDIA_URL = os.path.join(MEDIA_URL, 'blogquintet/')
